@@ -29,7 +29,7 @@ SPIDERZ <- function(input_Zscores, bilateral=TRUE, sigline=TRUE, customtracts=FA
   # first set up left and right data **note: should probably grep these directly from data
   roi_names <- c("AF","CG", "CST", "FX", "IFOF", "ILF", "SCP", "SLF III", "SLF II", "SLF I", "UF", "CC")
 
-  CCnames <- grep("CC_FDC_Z", colnames(input_Zscores), value=TRUE)
+  CCnames <- grep("CC_FDC", colnames(input_Zscores), value=TRUE)
   leftnames <- grep("left",colnames(input_Zscores), value=TRUE)
   rightnames <- grep("right",colnames(input_Zscores), value=TRUE)
 
