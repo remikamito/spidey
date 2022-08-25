@@ -18,7 +18,7 @@
 #' @examples
 #' COMBATTRACTS()
 
-COMBATTRACTS <- function(input_data, ID_column, tractrange, scanner_column, age_column) {
+COMBATTRACTS <- function(input_data, ID_column, tractrange, scanner_column, age_column, group_column) {
   require(neuroCombat)
   require(reshape)
   require(tidyr)
@@ -29,22 +29,21 @@ COMBATTRACTS <- function(input_data, ID_column, tractrange, scanner_column, age_
   batch <- input_data[[scanner_column]]
   tractnames <- colnames(input_data)[tractrange]
   ID_name <- colnames(FDCdat)[1]
-  TractDat <- FDCdat %>% gather("Tract","value", 2:ncol(FDCdat)) %>% spread(ID_name,value) # turn FDCdat to long
-  dat_final <- TractDat[-c(1)]
+  dat_format <- data.frame(t(FDCdat[-1]))
+  colnames(dat_format) <- FDCdat[,1]
 
-  # set up model including age **NOTE: include flexibility here?
+  # set up model including age and group. **NOTE: include flexibility here?
   age <- input_data[[age_column]]
-  mod <- model.matrix(~age)
+  group <- input_data[[group_column]]
+  mod <- model.matrix(~age + group)
 
   # run data harmonization
-  combat.harmonized <- neuroCombat(dat=dat_final, batch=batch, mod=mod)
+  combat.harmonized <- neuroCombat(dat=dat_format, batch=batch, mod=mod)
 
   # Output combat data
   harmon_dat <- combat.harmonized$dat.combat # note: this is a matrix
-  harmon_wide <- as.data.frame(cbind(Tract=tractnames, harmon_dat)) # use as.data.frame to convert matrix to df
-  combat_data <- harmon_wide %>% gather(ID_name,"value", 2:ncol(harmon_wide)) %>% spread(Tract,value)
-
-  # Combine combat data with orig?????
+  combat_data <- data.frame(t(harmon_dat))
+  combat_data <- cbind(ID_name=rownames(combat_data), combat_data)
 
   return(combat_data)
 }
@@ -113,14 +112,14 @@ COMPUTEZ <- function(input_data, tract, patient_ID, HC = 0, ID_column=1, Group_c
 
 
 RUNTRACTZ <- function(input_data, tractrange, patient_ID, combat=TRUE,
-                      ID_column=1, scanner_column=10, age_column=8){
+                      ID_column=1, scanner_column=10, age_column=8, group_column=12){
   # if combat = "TRUE", then run COMBAT, else nah
   Zdat <- data.frame(ID=patient_ID)
   # also grab age, ICV, scanner, other important variables into this dataframe?
-  tractnames <- colnames(input_data[,tractrange])
+  tractnames <- colnames(input_data[tractrange])
   if(combat==TRUE){
     # first combat
-    combat_data <- COMBATTRACTS(input_data, ID_column, tractrange, scanner_column, age_column)
+    combat_data <- COMBATTRACTS(input_data, ID_column, tractrange, scanner_column, age_column, group_column)
     clinical_data <- input_data[, -c(tractrange)]
     names(combat_data)[names(combat_data) == 'ID_name'] <- colnames(input_data)[1]
     combat_data <- merge(clinical_data, combat_data, by = colnames(input_data)[1])
@@ -144,6 +143,3 @@ RUNTRACTZ <- function(input_data, tractrange, patient_ID, combat=TRUE,
 
   return(Zdat)
 }
-
-
-
