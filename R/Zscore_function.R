@@ -112,7 +112,7 @@ COMPUTEZ <- function(input_data, tract, patient_ID, HC = 0, ID_column=1, Group_c
 
 
 RUNTRACTZ <- function(input_data, tractrange, patient_ID, combat=TRUE,
-                      ID_column=1, scanner_column=10, age_column=8, group_column=12){
+                      ID_column=1, scanner_column=5, age_column=3, group_column=7){
   # if combat = "TRUE", then run COMBAT, else nah
   Zdat <- data.frame(ID=patient_ID)
   # also grab age, ICV, scanner, other important variables into this dataframe?
