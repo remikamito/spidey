@@ -135,7 +135,7 @@ RUNTRACTZ <- function(input_data, tractrange, patient_ID, combat=TRUE,
     for (t in tractnames) {
       tractname_INT <- paste(t, "_INT", sep="")
       INT_data <- RANKINT(input_data, t, tractname_INT)
-      newdat <- COMPUTEZ(INT_data, t, patient_ID, , HC = 0, ID_column, group_column)
+      newdat <- COMPUTEZ(INT_data, t, patient_ID, HC = 0, ID_column, group_column)
       Zdat[ , ncol(Zdat) + 1] <- newdat
       colnames(Zdat)[ncol(Zdat)] <- paste0(t, "_Z")
     }
