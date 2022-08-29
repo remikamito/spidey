@@ -32,10 +32,14 @@ Tract Z-scores can be computed using the `RUNTRACTZ` function. This function wil
 As an example, we can run `RUNTRACTZ` on our included sample data:
 
     library(spidey)
-    Zscores <- RUNTRACTZ(tractdata, 14:42, "P01", combat=TRUE)
+    Zscores <- RUNTRACTZ(tractdata, 8:36, "P01", combat=TRUE)
 
-This will output a dataframe (Zscores), which contains Z-scores for each tract included within the tract range (here, columns 14 through to 42) for a given patient (ID = P01).
+This will output a dataframe (Zscores), which contains Z-scores for each tract included within the tract range (here, columns 8 through to 36) for a given patient (ID = P01).
 As we have included the option to perform ComBat, the tract data will first be harmonised across the scanners/sites.
 
 ### 3. Generate spider plots
-To be completed.
+Once a dataframe of Z-scores for tract data has been generated using the `RUNTRACTZ` function, the `SPIDERZ` function can be used to plot tract Z-scores on a spider chart.
+
+    SPIDERZ(Zscores)
+
+ 
