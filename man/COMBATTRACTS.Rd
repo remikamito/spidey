@@ -4,7 +4,14 @@
 \alias{COMBATTRACTS}
 \title{COMBAT function}
 \usage{
-COMBATTRACTS(input_data, ID_column, tractrange, scanner_column, age_column)
+COMBATTRACTS(
+  input_data,
+  ID_column,
+  tractrange,
+  scanner_column,
+  age_column,
+  group_column
+)
 }
 \arguments{
 \item{input_data}{A dataframe containing unharmonised tract data.}

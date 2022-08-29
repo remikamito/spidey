@@ -10,8 +10,9 @@ RUNTRACTZ(
   patient_ID,
   combat = TRUE,
   ID_column = 1,
-  scanner_column = 10,
-  age_column = 8
+  scanner_column = 5,
+  age_column = 3,
+  group_column = 7
 )
 }
 \arguments{

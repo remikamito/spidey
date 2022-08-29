@@ -4,14 +4,7 @@
 \alias{COMPUTEZ}
 \title{COMPUTEZ function}
 \usage{
-COMPUTEZ(
-  input_data,
-  tract,
-  patient_ID,
-  HC = 0,
-  ID_column = 1,
-  Group_column = 12
-)
+COMPUTEZ(input_data, tract, patient_ID, HC = 0, ID_column, Group_column)
 }
 \arguments{
 \item{input_data}{A dataframe containing tract data}
