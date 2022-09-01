@@ -5,7 +5,7 @@
 \alias{tractdata}
 \title{Tract FDC data from fixel-based analysis of DWI data}
 \format{
-A data frame with 102 rows and 36 variables:
+A data frame with 100 rows and 36 variables:
 \describe{
 \item{Group}{Group of participant, either patient (1) or control (0)}
 \item{Scanner_ID}{identifier of scanner or site, for use in ComBat}
