@@ -16,7 +16,7 @@
 #' @keywords neuroCombat tracts
 #' @export
 #' @examples
-#' COMBATTRACTS()
+#' COMBATTRACTS(tractdata, 1, 8:36, 5, 3, 7)
 
 COMBATTRACTS <- function(input_data, ID_column, tractrange, scanner_column, age_column, group_column) {
   require(neuroCombat)
@@ -57,7 +57,7 @@ COMBATTRACTS <- function(input_data, ID_column, tractrange, scanner_column, age_
 #' @param int_tract Column name of inverse-normal transformed tract data
 #' @export
 #' @examples
-#' RANKINT()
+#' RANKINT(tractdata, CST_right, CST_right_INT)
 
 RANKINT <- function(input_data, tract, int_tract) {
   require(RNOmni)
@@ -78,7 +78,7 @@ RANKINT <- function(input_data, tract, int_tract) {
 #' @param Group_column The column index corresponding to the Group identifier. Defaults to 12
 #' @export
 #' @examples
-#' COMPUTEZ()
+#' COMPUTEZ(tractdata, CST_right, "P01", HC=0, 1, 7)
 
 COMPUTEZ <- function(input_data, tract, patient_ID, HC = 0, ID_column, Group_column){
   tract_INT <- paste(tract, "_INT", sep="")
@@ -108,7 +108,7 @@ COMPUTEZ <- function(input_data, tract, patient_ID, HC = 0, ID_column, Group_col
 #' @param age_column The column index corresponding to age. Defaults to 8
 #' @export
 #' @examples
-#' RUNTRACTZ()
+#' RUNTRACTZ(tractdata, 8:36, "P01)
 
 
 RUNTRACTZ <- function(input_data, tractrange, patient_ID, combat=TRUE,
