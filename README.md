@@ -25,7 +25,7 @@ The expected input data is a dataframe containing individual participants as row
 In addition, columns corresponding to a participant ID and the participant group (e.g., healthy control or patient) should be included.
 If tract data have been extracted from a cohort scanned on different scanners or at different sites, columns corresponding to scanner ID and participant age should also be included.
 
-Sample data is available within this package.
+Sample data (tractdata) is available within this package.
 
 ### 2. Compute tract Z-scores
 Tract Z-scores can be computed using the `RUNTRACTZ` function. This function will output a dataframe with Z-scores for a given participant. 
