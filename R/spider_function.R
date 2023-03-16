@@ -10,9 +10,7 @@
 #' control cohort. Z-scores can be computed using the RUNTRACTZ function if input
 #' data contains tract data for both healthy control participants and the patient.
 #' @param input_Zscores A dataframe containing Z-scores for tract data for a patient.
-#' @param bilateral I have not done this yet. Defaults to TRUE.
 #' @param sigline Include a significance threshold line (Z=-1.96) in plot? Defaults to TRUE
-#' @param customtracts I have not done this yet. Defaults to FALSE
 #' @param leftcol Colour for left-sided tracts. Defaults to "#3498DB"
 #' @param rightcol Colour for left-sided tracts. Defaults to "#E74C3C"
 #' @export
